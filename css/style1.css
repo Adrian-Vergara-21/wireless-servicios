@@ -1,0 +1,222 @@
+/* ========================================================= */
+/* style1.css (¡VERSIÓN BOOF! con Glassmorphism y Fondo Dinámico) */
+/* ========================================================= */
+
+body {
+    font-family:Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Oculta el fondo dinámico que se sale de la pantalla */
+    background-color: #f0f4f8; /* Color de fallback */
+}
+
+/* ---------------------------------------------------- */
+/* FONDO DINÁMICO (Blobs de color animado) - El "Wow" principal */
+/* ---------------------------------------------------- */
+
+/* Crea dos formas grandes y desenfocadas que se mueven */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1; 
+    filter: blur(150px); /* Desenfoque extremo para un efecto "blob" */
+    opacity: 0.8; 
+    /* Curva de movimiento suave y constante */
+    animation: blob-move 20s infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+}
+
+/* Blob 1: Azul principal */
+body::before {
+    background: #0d47a1; 
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    left: -150px;
+}
+
+/* Blob 2: Azul más brillante */
+body::after {
+    background: #2196f3; 
+    width: 400px;
+    height: 400px;
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 10s; /* Empieza después del primero para un movimiento más orgánico */
+}
+
+/* Define la animación de movimiento */
+@keyframes blob-move {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, -50px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+
+/* ---------------------------------------------------- */
+/* Contenedor de Login (Efecto Glassmorphism / Vidrio Esmerilado) */
+/* ---------------------------------------------------- */
+.login-container {
+    background: rgba(255, 255, 255, 0.15); /* Fondo blanco semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde de luz que da el efecto de cristal */
+    
+    /* EFECTO CRÍTICO DE GLASSMORPHISM */
+    backdrop-filter: blur(10px); /* Desenfoque del fondo para el vidrio esmerilado */
+    -webkit-backdrop-filter: blur(10px);
+
+    padding: 3em 4em;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(13, 71, 161, 0.37); /* Sombra intensa y azulada */
+    
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+.login-container:hover {
+    transform: scale(1.02); /* Se agranda ligeramente para atraer la vista */
+    box-shadow: 0 12px 40px 0 rgba(13, 71, 161, 0.45); /* Sombra más fuerte al pasar el mouse */
+}
+
+/* ---------------------------------------------------- */
+/* Cabecera y Títulos */
+/* ---------------------------------------------------- */
+.login-header h1 {
+    color: #0d47a1; 
+    font-size: 2.5em; 
+    margin: 0 0 0.1em 0;
+    letter-spacing: 2px;
+}
+.login-header p {
+    color: #0d47a1;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sombra de luz */
+}
+
+
+/* ---------------------------------------------------- */
+/* Campos de Entrada */
+/* ---------------------------------------------------- */
+.input-group label {
+    color: black; 
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 70%;
+    padding: 1em 1.2em;
+    border: 1px solid rgba(13, 71, 161, 0.1);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #4a618d;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    background-color: #fff;
+    /* Efecto de anillo de foco vibrante */
+    border-color: #2196f3; 
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3); 
+}
+
+/* ---------------------------------------------------- */
+/* Botones (Con degradado y efecto de "rebote") */
+/* ---------------------------------------------------- */
+.btn {
+    padding: 1.2em 2em; /* Botones más grandes */
+    border: none;
+    border-radius: 12px; 
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    width: 50%;
+    margin-top: 1em;
+    /* Efecto "rebote" (spring effect) al interactuar */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    /* Degradado de azul profundo a azul vibrante */
+    background: linear-gradient(45deg, #0d47a1, #2196f3); 
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05) translateY(-3px); /* Se levanta y se agranda (BOOF!) */
+    box-shadow: 0 8px 15px rgba(33, 150, 243, 0.4); /* Sombra de color */
+}
+
+.btn-secondary {
+    /* Degradado rojo/secundario más intenso */
+    background: linear-gradient(45deg, #c62828, #ff5252); 
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 15px rgba(229, 83, 80, 0.4); 
+}
+.hero-section {
+    /* Define un tamaño máximo para el contenedor del logo */
+    max-width: 300px; 
+    margin: 0 auto 1.5em auto; /* Centrar y añadir espacio abajo */
+}
+
+.hero-section img {
+    /* Establece el tamaño de la imagen */
+    width: 100%; /* La imagen ocupa el 100% del contenedor (.hero-section) */
+    height: auto; /* Mantiene la proporción para que no se distorsione */
+    
+    /* Efecto BOOF: Borde redondeado y sombra sutil */
+    border-radius: 5px; 
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.2); 
+    
+    /* Transición de escala al pasar el mouse (opcional) */
+    transition: transform 0.3s ease;
+}
+
+.hero-section img:hover {
+    transform: scale(1.05); /* Efecto de ligero zoom */
+}
+/* 1. Para navegadores basados en WebKit (Chrome, Safari, Edge, Opera) */
+.input-group input::placeholder {
+    color: rgba(13, 71, 161, 0.4); /* Azul principal semi-transparente */
+    font-style: italic;           /* Opcional: para que se vea más como sugerencia */
+    font-weight: 800;             /* Hace el texto un poco más grueso */
+    opacity: 1;                   /* Asegura que no sea demasiado transparente */
+    transition: color 0.3s ease;
+}
+
+/* 2. Para Firefox */
+.input-group input::-moz-placeholder {
+    color: rgba(13, 71, 161, 0.4); 
+    font-style: italic;
+    font-weight: 500;
+    opacity: 1;                   /* Es crucial para anular la opacidad por defecto de Firefox */
+    transition: color 0.3s ease;
+}
+
+/* ---------------------------------------------------------------- */
+/* EFECTO BOOF ADICIONAL: Resaltar el placeholder al hacer focus */
+/* ---------------------------------------------------------------- */
+
+/* Cuando el usuario hace clic en el input, el placeholder se resalta brevemente antes de desaparecer */
+.input-group input:focus::placeholder {
+    color: rgba(33, 150, 243, 0.7); /* Azul brillante más visible */
+    opacity: 0.8;
+}
+
+.input-group input:focus::-moz-placeholder {
+    color: rgba(33, 150, 243, 0.7);
+    opacity: 0.8;
+}

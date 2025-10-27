@@ -1,0 +1,219 @@
+/* Nuevo estilo BOOF: Fondo Dinámico */
+body {
+    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Se usa min-height para que funcione con contenido largo */
+    margin: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal de los blobs */
+    position: relative;
+    z-index: 1;
+}
+
+body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(150px);
+    opacity: 0.8;
+    animation: blob-move 20s infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+body::before {
+    background: #0d47a1; /* Azul principal */
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    left: -200px;
+}
+
+body::after {
+    background: #20c997; /* Teal/Verde vibrante */
+    width: 700px;
+    height: 700px;
+    bottom: -250px;
+    right: -250px;
+    animation-delay: -10s;
+}
+
+@keyframes blob-move {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(100px, -50px) scale(1.1); }
+    66% { transform: translate(-50px, 100px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Aplicar Glassmorphism al contenedor principal */
+.register-container {
+    /* Estilos BOOF (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(13, 71, 161, 0.1);
+
+    /* Mantener propiedades de layout */
+    padding: 2em;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    margin: 20px auto; 
+    z-index: 2; /* Asegura que el contenido esté por encima del fondo */
+}
+
+.register-header h1 {
+    color: #0d47a1;
+    font-size: 1.8em;
+    margin: 0 0 0.2em 0;
+}
+
+.register-header p {
+    color: #4a618d;
+    font-size: 1em;
+    border-bottom: 1px solid #c0d1e6;
+    padding-bottom: 1em;
+    margin-bottom: 1.5em;
+}
+
+.step-section {
+    padding: 1em;
+    border: 1px dashed #c0d1e6;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.4); /* Ligeramente más transparente */
+    margin-bottom: 1.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-group {
+    margin-bottom: 1.2em;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="number"],
+.input-group input[type="email"],
+.input-group input[type="date"],
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 0.7em;
+    border: 1px solid #c0d1e6;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo de input semi-transparente */
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    border-color: #0d47a1;
+    outline: none;
+    box-shadow: 0 0 5px rgba(13, 71, 161, 0.5);
+}
+
+/* Base de botones BOOF */
+.btn {
+    display: inline-block;
+    padding: 0.8em 1.5em; /* Aumentado el padding para el estilo BOOF */
+    border-radius: 10px; /* Más redondeado */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición BOOF */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.btn:hover {
+    transform: scale(1.05) translateY(-2px); /* Efecto bouncy BOOF */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    /* Estilo BOOF - Degradado Azul */
+    background: linear-gradient(45deg, #0d47a1, #2196f3);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #2196f3, #0d47a1); /* Degradado inverso al pasar el mouse */
+}
+
+.btn-secondary {
+    /* Estilo BOOF - Degradado Rojo (para botones de cancelar/limpiar) */
+    background: linear-gradient(45deg, #c62828, #e57373);
+    color: white; 
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #e57373, #c62828);
+}
+
+/* Estilos de botones customizados */
+.btn_modificado {
+    background: linear-gradient(45deg, #0d47a1, #2196f3);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.btn_modificado:hover {
+    background: linear-gradient(45deg, #2196f3, #0d47a1);
+}
+
+.btn_modificado2 {
+    background: linear-gradient(45deg, #6c757d, #adb5bd); /* Gris */
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.btn_modificado2:hover {
+    background: linear-gradient(45deg, #adb5bd, #6c757d);
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.message {
+    margin-top: 1em;
+    padding: 0.8em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #e8f5e9;
+    color: #4caf50;
+    border: 1px solid #a5d6a7;
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: #f44336;
+    border: 1px solid #ef9a9a;
+}
