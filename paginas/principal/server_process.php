@@ -7,11 +7,6 @@ error_reporting(E_ALL);
 
 /**
  * Script para cargar datos del lado del servidor en DataTables
- *
- * @author MRoblesDev
- * @version 1.1 - Incluye nombres en lugar de IDs para Municipio, Parroquia, Plan y Vendedor
- * https://github.com/mroblesdev
- *
  */
 
 require 'conexion.php';

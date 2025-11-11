@@ -31,7 +31,7 @@ body::before {
 }
 
 body::after {
-    background: #20c997; /* Teal/Verde vibrante */
+    background: #0d47a1; /* Teal/Verde vibrante */
     width: 700px;
     height: 700px;
     bottom: -250px;
